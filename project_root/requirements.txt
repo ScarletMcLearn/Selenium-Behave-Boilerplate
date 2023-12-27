@@ -1,0 +1,3 @@
+# Behave Selenium Web Automation Project
+behave==1.2.7
+selenium==3.141.0
