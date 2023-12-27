@@ -11,12 +11,19 @@ class DriverManager:
 
     def initialize_driver(self):
         if self.browser == 'chrome':
-            return self.init_chrome_driver()
+            driver = self.init_chrome_driver()
         elif self.browser == 'firefox':
-            return self.init_firefox_driver()
+            driver = self.init_firefox_driver()
         else:
             raise ValueError(f"Unsupported browser: {self.browser}")
 
+        # Set implicit wait to handle dynamic elements
+        driver.implicitly_wait(10)  # Adjust the wait time as needed
+
+        return driver
+    
+
+    
     def init_chrome_driver(self):
         chrome_options = Options()
         if self.headless:
