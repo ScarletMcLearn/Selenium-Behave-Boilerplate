@@ -1,47 +1,42 @@
+# driver_manager.py
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
-class DriverManager:
-    def __init__(self, browser='chrome', headless=True):
-        self.browser = browser.lower()
-        self.headless = headless
-        self.driver = self.initialize_driver()
+def initialize_driver(browser="chrome"):
+    """
+    Initialize a WebDriver instance based on the specified browser.
 
-    def initialize_driver(self):
-        if self.browser == 'chrome':
-            driver = self.init_chrome_driver()
-        elif self.browser == 'firefox':
-            driver = self.init_firefox_driver()
-        else:
-            raise ValueError(f"Unsupported browser: {self.browser}")
+    :param browser: Browser name ("chrome" or "firefox"). Default is "chrome".
+    :return: WebDriver instance.
+    :raises ValueError: If an unsupported browser is specified.
+    """
+    if browser.lower() == "chrome":
+        return webdriver.Chrome()
+    elif browser.lower() == "firefox":
+        return webdriver.Firefox()
+    else:
+        raise ValueError("Unsupported browser")
 
-        # Set implicit wait to handle dynamic elements
-        driver.implicitly_wait(10)  # Adjust the wait time as needed
+def quit_driver(driver):
+    """
+    Quit the provided WebDriver instance.
 
-        return driver
-    
+    :param driver: WebDriver instance to be quit.
+    """
+    if driver:
+        driver.quit()
 
-    
-    def init_chrome_driver(self):
-        chrome_options = Options()
-        if self.headless:
-            chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('--window-size=1920,1080')
+# # Example Usage:
 
-        return webdriver.Chrome(options=chrome_options)
+# # Example 1: Initialize a ChromeDriver
+# chrome_driver = initialize_driver()
+# chrome_driver.get("https://www.example.com")
+# # Perform actions with the ChromeDriver
+# quit_driver(chrome_driver)  # Quit the ChromeDriver
 
-    def init_firefox_driver(self):
-        firefox_options = FirefoxOptions()
-        if self.headless:
-            firefox_options.add_argument('--headless')
-        firefox_options.add_argument('--disable-gpu')
-        firefox_options.add_argument('--window-size=1920,1080')
-
-        return webdriver.Firefox(options=firefox_options, desired_capabilities=DesiredCapabilities.FIREFOX)
-
-    def quit_driver(self):
-        if self.driver:
-            self.driver.quit()
+# # Example 2: Initialize a FirefoxDriver
+# firefox_driver = initialize_driver(browser="firefox")
+# firefox_driver.get("https://www.example.com")
+# # Perform actions with the FirefoxDriver
+# quit_driver(firefox_driver)  # Quit the FirefoxDriver
