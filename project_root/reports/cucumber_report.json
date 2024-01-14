@@ -1,0 +1,116 @@
+[
+    {
+        "keyword": "Feature",
+        "name": "User Login",
+        "tags": [],
+        "elements": [
+            {
+                "type": "scenario",
+                "keyword": "Scenario",
+                "name": "Successful Login Using Feature Params",
+                "tags": [],
+                "steps": [
+                    {
+                        "keyword": "Given",
+                        "name": "the user is on the site \"https://www.saucedemo.com/\"",
+                        "match": {
+                            "location": "features/steps/login_steps.py:20",
+                            "arguments": [
+                                {
+                                    "value": "https://www.saucedemo.com/",
+                                    "name": "site"
+                                }
+                            ]
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1.088876485824585
+                        },
+                        "line": 7
+                    },
+                    {
+                        "keyword": "When",
+                        "name": "the user enters correct username \"standard_user\" and password \"secret_sauce\" and submits the form",
+                        "match": {
+                            "location": "features/steps/login_steps.py:27",
+                            "arguments": [
+                                {
+                                    "value": "standard_user",
+                                    "name": "username"
+                                },
+                                {
+                                    "value": "secret_sauce",
+                                    "name": "password"
+                                }
+                            ]
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0.5245132446289062
+                        },
+                        "line": 9
+                    },
+                    {
+                        "keyword": "Then",
+                        "name": "the user should be successfully logged in",
+                        "match": {
+                            "location": "features/steps/login_steps.py:33",
+                            "arguments": []
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0.9393391609191895
+                        },
+                        "line": 11
+                    }
+                ],
+                "line": 5,
+                "uri": "features/login/login.feature",
+                "description": "",
+                "id": 1
+            },
+            {
+                "type": "scenario",
+                "keyword": "Scenario",
+                "name": "Successful Login Using Config File",
+                "tags": [],
+                "steps": [
+                    {
+                        "keyword": "Given",
+                        "name": "the user is on the site in config file",
+                        "match": {
+                            "location": "features/steps/login_steps.py:40",
+                            "arguments": []
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1.0422651767730713
+                        },
+                        "line": 15
+                    },
+                    {
+                        "keyword": "When",
+                        "name": "the user enters correct username and password and submits the form",
+                        "match": {
+                            "location": "features/steps/login_steps.py:46",
+                            "arguments": []
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0.13209223747253418
+                        },
+                        "line": 17
+                    }
+                ],
+                "line": 13,
+                "uri": "features/login/login.feature",
+                "description": "",
+                "id": 2
+            }
+        ],
+        "line": 3,
+        "uri": "features/login/login.feature",
+        "description": "",
+        "id": 0
+    }
+]
