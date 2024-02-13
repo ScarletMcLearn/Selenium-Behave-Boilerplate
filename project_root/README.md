@@ -16,7 +16,7 @@ This project demonstrates a web automation framework using Behave (a BDD framewo
 ## Project Structure
 
 The project follows a structured directory layout:
-
+'''
 project_root/
 │
 ├── features/
@@ -47,7 +47,7 @@ project_root/
 ├── behave.ini
 ├── requirements.txt
 └── README.md
-
+'''
 
 
 - **`features/`**: Contains Behave feature files, step definitions, and environment setup.
